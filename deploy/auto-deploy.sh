@@ -20,7 +20,7 @@ git pull origin main
 source .venv/bin/activate
 pip install -r requirements.txt > /dev/null
 
-if ! pytest tests/; then
+if ! python -m pytest tests/; then
     echo "Tests failed, refusing to deploy."
     exit 1
 fi
