@@ -1,9 +1,4 @@
-# Activate venv and install pinned dependencies
-if [ -f "$SCRIPT_DIR/requirements.txt" ]; then
-    python3 -m venv "$SCRIPT_DIR/.venv"
-    source "$SCRIPT_DIR/.venv/bin/activate"
-    pip install -r "$SCRIPT_DIR/requirements.txt"
-fi#!/bin/bash
+#!/bin/bash
 
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -11,13 +6,14 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 sudo apt update
 sudo apt install -y git python3 python3-pip python3-venv curl postgresql nginx
 
+ 
 
 # Activate venv and install pinned dependencies
-if [ -d "$SCRIPT_DIR/.venv" ] && [ -f "$SCRIPT_DIR/requirements.txt" ]; then
+if [ -f "$SCRIPT_DIR/requirements.txt" ]; then
+    python3 -m venv "$SCRIPT_DIR/.venv"
     source "$SCRIPT_DIR/.venv/bin/activate"
     pip install -r "$SCRIPT_DIR/requirements.txt"
 fi
-
 
 # Pull the model
 if [ -f .env ]; then
