@@ -1,4 +1,9 @@
-#!/bin/bash
+# Activate venv and install pinned dependencies
+if [ -f "$SCRIPT_DIR/requirements.txt" ]; then
+    python3 -m venv "$SCRIPT_DIR/.venv"
+    source "$SCRIPT_DIR/.venv/bin/activate"
+    pip install -r "$SCRIPT_DIR/requirements.txt"
+fi#!/bin/bash
 
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
