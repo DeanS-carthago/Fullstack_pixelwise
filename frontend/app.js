@@ -57,7 +57,7 @@ function getPixels() {
 }
 
 async function classify() {
-    const r = await fetch("/api/classify", {
+    const r = await fetch("http://127.0.0.1:3000/classify", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
