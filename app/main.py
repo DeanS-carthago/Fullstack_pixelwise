@@ -10,7 +10,6 @@ from slowapi import Limiter
 from slowapi.util import get_remote_address
 from slowapi.middleware import SlowAPIMiddleware
 from app.models import Prediction, SessionLocal
-from fastapi.middleware.cors import CORSMiddleware
 import os
 
 
@@ -23,12 +22,6 @@ class ClassifyResponse(BaseModel):
 	scores: dict[str, float]
 
 app = FastAPI()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://127.0.0.1:3000", "http://localhost:3000"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],)
 
 @app.get("/health")
 def health():
@@ -68,18 +61,4 @@ def classify(request: Request, req: ClassifyRequest):
 	
 
 	
-@app.post("/classify-bearer", response_model=ClassifyResponse)
-@limiter.limit("30/minute")
 
-def classify_bearer(
-    request: Request,
-    req: ClassifyRequest,
-    user: str = Depends(get_current_user),):
-    
-    arr = np.array(req.pixels, dtype=np.uint8)[np.newaxis]
-	result = classify_batch(arr)[0]
-	db.add(Prediction(prediction=result["prediction"], confidence=result["confidence"], model_version="v1_bearer"))
-	db.commit()
-	db.close()
-	return result
-    
