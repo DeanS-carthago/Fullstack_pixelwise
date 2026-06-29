@@ -133,8 +133,8 @@ document.getElementById("login-cancel").onclick = () => {
 };
 
 document.getElementById("login-submit").onclick = async () => {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
 
     // /token expects classic form-encoded data, not JSON.
     const body = new URLSearchParams({ username, password });
