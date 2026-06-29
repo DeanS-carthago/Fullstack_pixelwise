@@ -168,13 +168,13 @@ async function classify() {
             out.textContent = "Please log in first";
             return;
         }
-        url = "/classify-bearer";
+        url = "/api/classify-bearer";
         headers = {
             "Content-Type": "application/json",
             "Authorization": "Bearer " + bearerToken
         };
     } else {
-        url = "/classify";
+        url = "/api/classify";
         headers = {
             "Content-Type": "application/json",
             "X-API-Key": API_KEY
@@ -205,7 +205,7 @@ async function classify() {
 }
 
 async function refresh() {
-    const r = await fetch("/results");
+    const r = await fetch("/api/results");
     if (!r.ok) return;
     const ul = document.getElementById("history");
     ul.innerHTML = "";
