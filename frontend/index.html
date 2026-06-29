@@ -8,8 +8,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="auth-status" class="auth-status" hidden>
+        <span class="dot"></span>
+        <span id="auth-status-text">Logged in</span>
+    </div>
+
     <h1>PixelWise</h1>
     <p>Draw a digit, then click Classify.</p>
+
+    <div class="auth-switch-row">
+        <span class="auth-switch-label">Auth mode:</span>
+        <button id="auth-switch" class="switch" data-mode="apikey" aria-pressed="false">
+            <span class="switch-track">
+                <span class="switch-thumb"></span>
+            </span>
+            <span class="switch-option switch-option-left">API Key</span>
+            <span class="switch-option switch-option-right">Bearer</span>
+        </button>
+    </div>
+
     <canvas id="pad" width="280" height="280"></canvas>
     <div class="controls">
         <button id="classify">Classify</button>
@@ -18,6 +35,20 @@
     <div id="result"></div>
     <h2>Recent predictions</h2>
     <ul id="history"></ul>
+
+    <div id="login-modal" class="modal-overlay" hidden>
+        <div class="modal">
+            <h3>Log in for Bearer Token</h3>
+            <input id="username" type="text" placeholder="Username">
+            <input id="password" type="password" placeholder="Password">
+            <div id="login-error" class="login-error"></div>
+            <div class="modal-actions">
+                <button id="login-cancel" class="secondary">Cancel</button>
+                <button id="login-submit">Login</button>
+            </div>
+        </div>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>
