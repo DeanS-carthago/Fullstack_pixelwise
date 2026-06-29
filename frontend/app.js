@@ -139,7 +139,7 @@ document.getElementById("login-submit").onclick = async () => {
     // /token expects classic form-encoded data, not JSON.
     const body = new URLSearchParams({ username, password });
 
-    const r = await fetch("/token", {
+    const r = await fetch("/api/token", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body
