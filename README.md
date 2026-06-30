@@ -1,11 +1,14 @@
-# PIXELWISE
 
-This is a one-line project description of pixelwise, a full stack project
-that teaches students how to deploy a small machine learning product on
-a virtual machine.
+# Fullstack Pixelwise
 
-First thing they learn is how to change things here in this repo. 
-Such as this sentence itself.
+This repository contains the implemented bearer-token based authentication solution for the API Security project.
 
+## Setup
+1. Clone repository
+2. Install dependencies
+3. Create `.env` based on `.env.example` (copy .env.example to your local .env file) 
+4. Start backend/frontend
 
-Let's get this autodeployed for Kudos.
+## Authentication
+Users authenticate via login endpoint and receive a bearer token.
+This bearer is used for the classification of the image. 
