@@ -11,4 +11,5 @@ This repository contains the implemented bearer-token based authentication solut
 
 ## Authentication
 Users authenticate via login endpoint and receive a bearer token.
+The credentials used for the login are in `.env.example`
 This bearer is used for the classification of the image. 
