@@ -6,7 +6,7 @@ This repository contains the implemented bearer-token based authentication solut
 ## Setup
 1. Clone repository
 2. Install dependencies
-3. Create `.env` based on `.env.example` (copy .env.example to your local .env file) 
+3. Create `.env` based on `.env.example` (copy `.env.example` to your local `.env` file) 
 4. Start backend/frontend
 
 ## Authentication
